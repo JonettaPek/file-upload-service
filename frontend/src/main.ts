@@ -1,6 +1,5 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
-import { AppComponent } from './app/app.component';
+import { FileUploadComponent } from './app/components/file-upload/file-upload.component';
+import { FileUploadModule } from './app/components/file-upload/file-upload.module';
 
-bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
+bootstrapApplication(FileUploadComponent).catch((err) => console.error(err));

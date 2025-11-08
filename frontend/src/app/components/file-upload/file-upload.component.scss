@@ -1,0 +1,26 @@
+.file-input {
+    /* Hide the input element visually but keep it functional */
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+  
+.custom-file-input-label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+    margin-right: 10px; 
+}
+  
+#fileNameDisplay {
+    font-size: 0.9rem;
+    color: #555;
+    margin-right: 10px; 
+}

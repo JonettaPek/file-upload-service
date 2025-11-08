@@ -25,11 +25,9 @@ public class FileUploadController {
     private FileProcessingService fileProcessingService;
 
     @PostMapping(value = "/upload")
-    public ResponseEntity<ApiResponse<FileStatistics>> uploadFile(@RequestParam("file") MultipartFile file) throws IOException {
+    public ResponseEntity<ApiResponse<FileStatistics>> uploadAndProcessFile(@RequestParam("file") MultipartFile file) throws IOException {
         logger.info("Received file upload request for file '{}'", file.getOriginalFilename());
-
-         FileStatistics fileStatistics = fileProcessingService.uploadFile(file);
-
+        FileStatistics fileStatistics = fileProcessingService.uploadFile(file);
         logger.info("Successfully uploaded file '{}'", file.getOriginalFilename());
         return ResponseEntity
             .created(URI.create(String.format("/upload/%s",fileStatistics.getFileId())))
@@ -40,7 +38,7 @@ public class FileUploadController {
     }
 
     @GetMapping(value = "/upload/{fileId}")
-    public ResponseEntity<ApiResponse<FileStatistics>> getFileById(@PathVariable("fileId") String fileId) {
+    public ResponseEntity<ApiResponse<FileStatistics>> getFileStatisticsByFileId(@PathVariable("fileId") String fileId) {
         logger.info("Received file statistics fetch request for file id '{}'", fileId);
         FileStatistics fileStatistics = this.fileProcessingService.fetchFileStatistics(fileId);
         logger.info("Successfully fetched file statistics for file id '{}'", fileId);

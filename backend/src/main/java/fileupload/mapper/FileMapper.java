@@ -12,8 +12,6 @@ import java.time.LocalDateTime;
 @Mapper(componentModel = "spring")
 public interface FileMapper {
 
-    FileMapper INSTANCE = Mappers.getMapper(FileMapper.class);
-
     FileRecord modelToEntity(FileStatistics fileStatistics);
 
     @AfterMapping
